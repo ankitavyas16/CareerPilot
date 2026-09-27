@@ -1,0 +1,84 @@
+/* Additional Dashboard Specific Styles */
+
+.dashboard-grid {
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-secondary);
+}
+
+.loading::after {
+    content: "...";
+    animation: dots 1.5s infinite;
+}
+
+@keyframes dots {
+    0%, 20% { content: "."; }
+    40% { content: ".."; }
+    60%, 100% { content: "..."; }
+}
+
+.error-message {
+    background: #fee2e2;
+    color: #991b1b;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid #dc2626;
+}
+
+.success-message {
+    background: #dcfce7;
+    color: #15803d;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid #16a34a;
+}
+
+/* Match Percentage Badge */
+.percentage-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-right: 1rem;
+}
+
+.percentage-badge.excellent {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.percentage-badge.good {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.percentage-badge.fair {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.percentage-badge.poor {
+    background: #fee2e2;
+    color: #991b1b;
+}

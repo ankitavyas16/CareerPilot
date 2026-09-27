@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerPilot AI - Career Intelligence Agent</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1 class="logo">🚀 CareerPilot</h1>
+                <p class="tagline">AI Career Agent</p>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="#dashboard" class="nav-item active" data-page="dashboard">
+                    <span class="icon">📊</span> Dashboard
+                </a>
+                <a href="#profile" class="nav-item" data-page="profile">
+                    <span class="icon">👤</span> Profile
+                </a>
+                <a href="#jd-analyzer" class="nav-item" data-page="jd-analyzer">
+                    <span class="icon">📄</span> JD Analyzer
+                </a>
+                <a href="#job-matcher" class="nav-item" data-page="job-matcher">
+                    <span class="icon">🎯</span> Job Matcher
+                </a>
+                <a href="#jobs" class="nav-item" data-page="jobs">
+                    <span class="icon">💼</span> Jobs
+                </a>
+                <a href="#applications" class="nav-item" data-page="applications">
+                    <span class="icon">📋</span> Applications
+                </a>
+                <a href="#interview-prep" class="nav-item" data-page="interview-prep">
+                    <span class="icon">🎤</span> Interview Prep
+                </a>
+                <a href="#settings" class="nav-item" data-page="settings">
+                    <span class="icon">⚙️</span> Settings
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>v1.0.0</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-bar">
+                <h2 id="page-title">Dashboard</h2>
+                <div class="user-menu">
+                    <span id="user-name">Loading...</span>
+                </div>
+            </header>
+
+            <div class="content-area">
+                <!-- Dashboard Page -->
+                <section id="dashboard" class="page active">
+                    <div class="briefing-section">
+                        <h3 id="briefing-greeting">Good morning!</h3>
+                        <p id="briefing-action" class="briefing-action"></p>
+                    </div>
+
+                    <div class="dashboard-grid">
+                        <div class="stat-card">
+                            <div class="stat-label">Jobs Tracked</div>
+                            <div class="stat-value" id="stat-jobs">0</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Applications</div>
+                            <div class="stat-value" id="stat-apps">0</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Interviews</div>
+                            <div class="stat-value" id="stat-interviews">0</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Target Roles</div>
+                            <div class="stat-value" id="stat-roles">0</div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-section">
+                        <h3>📚 Skills in Demand</h3>
+                        <div id="missing-skills-list" class="skills-list">
+                            <p>Loading...</p>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-section">
+                        <h3>📅 Today's Focus</h3>
+                        <div class="focus-card">
+                            <p id="learning-focus">Learning goal loading...</p>
+                            <p id="recommended-action" class="action-text"></p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Profile Page -->
+                <section id="profile" class="page">
+                    <div class="form-card">
+                        <h3>Your Career Profile</h3>
+                        <form id="profileForm">
+                            <div class="form-group">
+                                <label>Full Name</label>
+                                <input type="text" id="profile-name" placeholder="Your name" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" id="profile-email" placeholder="your@email.com" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Current Role</label>
+                                <input type="text" id="profile-current-role" placeholder="e.g., Data Analyst">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Years of Experience</label>
+                                <input type="number" id="profile-years-exp" placeholder="e.g., 5" min="0" step="0.5">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Target Roles (comma-separated)</label>
+                                <textarea id="profile-target-roles" placeholder="Data Scientist, ML Engineer, AI Engineer"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Preferred Locations (comma-separated)</label>
+                                <textarea id="profile-locations" placeholder="San Francisco, Remote, New York"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Work Mode</label>
+                                <select id="profile-work-mode">
+                                    <option value="remote">Remote</option>
+                                    <option value="hybrid">Hybrid</option>
+                                    <option value="onsite">Onsite</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Salary Range (Min - Max)</label>
+                                <div class="salary-inputs">
+                                    <input type="number" id="profile-salary-min" placeholder="Min" min="0">
+                                    <span>-</span>
+                                    <input type="number" id="profile-salary-max" placeholder="Max" min="0">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Learning Goals (comma-separated)</label>
+                                <textarea id="profile-learning-goals" placeholder="Python, Deep Learning, MLOps"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Save Profile</button>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- JD Analyzer Page -->
+                <section id="jd-analyzer" class="page">
+                    <div class="form-card">
+                        <h3>📄 Job Description Analyzer</h3>
+                        <p class="help-text">Paste a job description to extract structured skills, responsibilities, and requirements.</p>
+
+                        <div class="form-group">
+                            <label>Paste Job Description</label>
+                            <textarea id="jd-text" placeholder="Paste the full job description here..." rows="8"></textarea>
+                        </div>
+
+                        <button id="analyze-jd-btn" class="btn btn-primary">Analyze JD</button>
+
+                        <div id="analysis-result" class="analysis-result" style="display:none;">
+                            <h4>Analysis Results</h4>
+                            <div class="result-grid">
+                                <div class="result-section">
+                                    <h5>Required Skills</h5>
+                                    <div id="analysis-required" class="skills-list"></div>
+                                </div>
+                                <div class="result-section">
+                                    <h5>Preferred Skills</h5>
+                                    <div id="analysis-preferred" class="skills-list"></div>
+                                </div>
+                                <div class="result-section">
+                                    <h5>Technologies</h5>
+                                    <div id="analysis-tech" class="skills-list"></div>
+                                </div>
+                                <div class="result-section">
+                                    <h5>Keywords</h5>
+                                    <div id="analysis-keywords" class="skills-list"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Job Matcher Page -->
+                <section id="job-matcher" class="page">
+                    <div class="form-card">
+                        <h3>🎯 Job Matcher</h3>
+                        <p class="help-text">See how well you match available positions.</p>
+
+                        <button id="match-all-jobs-btn" class="btn btn-primary">Match All Jobs</button>
+
+                        <div id="matches-container" class="matches-container" style="display:none;">
+                            <h4>Ranked Job Matches</h4>
+                            <div id="matches-list"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Jobs Page -->
+                <section id="jobs" class="page">
+                    <div class="form-card">
+                        <h3>💼 Job Listings</h3>
+
+                        <div class="form-group">
+                            <label>Add New Job</label>
+                            <input type="text" id="job-title" placeholder="Job title" class="job-input">
+                            <input type="text" id="job-company" placeholder="Company name" class="job-input">
+                            <textarea id="job-description" placeholder="Job description" rows="4" class="job-input"></textarea>
+                            <input type="text" id="job-location" placeholder="Location" class="job-input">
+                            <select id="job-work-mode" class="job-input">
+                                <option value="">Work Mode</option>
+                                <option value="remote">Remote</option>
+                                <option value="hybrid">Hybrid</option>
+                                <option value="onsite">Onsite</option>
+                            </select>
+                            <button id="add-job-btn" class="btn btn-primary">Add Job</button>
+                        </div>
+
+                        <h4>Saved Jobs</h4>
+                        <div id="jobs-list" class="jobs-list">
+                            <p>Loading jobs...</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Applications Page -->
+                <section id="applications" class="page">
+                    <div class="form-card">
+                        <h3>📋 Application Tracker</h3>
+
+                        <div id="applications-list" class="applications-list">
+                            <p>Loading applications...</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Interview Prep Page -->
+                <section id="interview-prep" class="page">
+                    <div class="form-card">
+                        <h3>🎤 Interview Preparation</h3>
+                        <p class="help-text">Prepare for your upcoming interviews with AI-generated questions and guidance.</p>
+
+                        <div id="interview-prep-content">
+                            <p>Select an interview from your applications to see prep materials.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Settings Page -->
+                <section id="settings" class="page">
+                    <div class="form-card">
+                        <h3>⚙️ Settings</h3>
+                        <div class="settings-section">
+                            <h4>API Configuration</h4>
+                            <p>Backend is running at: <code id="api-url">http://localhost:8000</code></p>
+                            <button id="test-api-btn" class="btn btn-secondary">Test API Connection</button>
+                            <p id="api-status" class="status-message"></p>
+                        </div>
+
+                        <div class="settings-section">
+                            <h4>About</h4>
+                            <p>CareerPilot AI v1.0.0</p>
+                            <p>Personal AI Career Agent for Job Search, Resume Matching, and Interview Prep</p>
+                            <p><a href="https://github.com" target="_blank">View on GitHub</a></p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/api.js"></script>
+</body>
+</html>
